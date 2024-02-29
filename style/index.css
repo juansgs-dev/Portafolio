@@ -13,9 +13,9 @@
   /*========== Font and typography ==========*/
   /*.5rem = 8px | 1rem = 16px ...*/
   --body-font: "Poppins", sans-serif;
-  --normal-font-size: .938rem;
-  --small-font-size: .813rem;
-  --smaller-font-size: .75rem;
+  --normal-font-size: 0.938rem;
+  --small-font-size: 0.813rem;
+  --smaller-font-size: 0.75rem;
   /*========== Font weight ==========*/
   --font-medium: 500;
   --font-semi-bold: 600;
@@ -26,8 +26,8 @@
 @media screen and (min-width: 1024px) {
   :root {
     --normal-font-size: 1rem;
-    --small-font-size: .875rem;
-    --smaller-font-size: .813rem;
+    --small-font-size: 0.875rem;
+    --smaller-font-size: 0.813rem;
   }
 }
 
@@ -99,7 +99,8 @@ a {
   width: 32px;
   height: 32px;
 }
-.nav__toggle-menu, .nav__toggle-close {
+.nav__toggle-menu,
+.nav__toggle-close {
   font-size: 1.25rem;
   color: var(--title-color);
   position: absolute;
@@ -173,7 +174,9 @@ a {
   font-weight: initial;
   transition: transform 0.4s;
 }
-.dropdown__content, .dropdown__group, .dropdown__list {
+.dropdown__content,
+.dropdown__group,
+.dropdown__list {
   display: grid;
 }
 .dropdown__container {
@@ -282,7 +285,8 @@ a {
     align-content: baseline;
     row-gap: 1.25rem;
   }
-  .dropdown__group:first-child, .dropdown__group:last-child {
+  .dropdown__group:first-child,
+  .dropdown__group:last-child {
     margin: 0;
   }
   .dropdown__list {
@@ -328,27 +332,73 @@ a {
   }
 }
 
-.main-section {
+/*=============== BACKGROUND ANIMATION ===============*/
+
+.block {
+  position: absolute;
+  width: 50px;
+  height: 100px;
+  background-color: rgb(243, 19, 19);
+  box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.2);
+}
+
+/*=============== BREAKPOINTS ===============*/
+
+.main {
   display: flex;
   flex-direction: column;
   gap: 20px; /* Espacio entre las secciones */
 }
 
 .section {
-  padding: 50px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  color: #0a0a0a;
+  padding: 0px 0;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  height: 100vh;
+}
+
+.subsection {
+  z-index: 1000;
+  display: flex;
+  align-items: center;
 }
 
 .skills-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  perspective: 800px; /* Se aplica la perspectiva para las transformaciones 3D */
 }
 
 .skills-list li {
-  background-color: #eee;
-  padding: 8px 16px;
-  margin: 5px;
-  border-radius: 5px;
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+  transform-style: preserve-3d; /* Necesario para las transformaciones 3D */
+}
+
+.skills-list li img {
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.rotate {
+  animation: rotateList 10s infinite linear; /* Animación de rotación infinita */
+}
+
+@keyframes rotateList {
+  from {
+      transform: rotateY(0deg);
+  }
+  to {
+      transform: rotateY(360deg);
+  }
 }
 
 .projects-list {
@@ -360,6 +410,42 @@ a {
   width: 30%;
   margin-right: 2%;
   margin-bottom: 20px;
+}
+
+.subsection {
+  z-index: 1000;
+}
+
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.experience {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+
+.separator {
+  width: 5px;
+  height: 100%;
+  background-color: #000;
+  margin: 0 20px;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
 }
 
 footer {
